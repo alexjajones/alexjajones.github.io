@@ -1,0 +1,10 @@
+{{ with site.Params.coffeeSetup }}
+<section class="coffee-setup">
+  <h2>☕ The coffee setup</h2>
+  <ul class="coffee-list">
+    {{ range . }}
+      <li><span class="coffee-emoji">{{ .emoji }}</span>{{ .name }}</li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

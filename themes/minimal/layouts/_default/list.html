@@ -1,0 +1,11 @@
+{{ define "main" }}
+  {{ partial "header.html" . }}
+  <h1>{{ .Title }}</h1>
+  <ul class="post-list">
+    {{ range .Pages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ with .Params.emoji }}{{ . }} {{ end }}{{ .Title }}</a>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

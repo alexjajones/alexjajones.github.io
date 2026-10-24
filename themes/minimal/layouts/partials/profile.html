@@ -1,0 +1,23 @@
+{{ with site.Params.profile }}
+{{ $email := .email }}
+<section class="profile">
+  <img class="profile-avatar" src="{{ .image | default "/images/avatar.svg" | relURL }}" alt="{{ .name | default site.Title }}">
+  <div class="profile-text">
+    <h1 class="profile-name">{{ .name | default site.Title }}</h1>
+    {{ with .subtitle }}<p class="profile-subtitle">{{ . | safeHTML }}</p>{{ end }}
+    {{ with .openToText }}
+    <p class="profile-open-to">
+      {{ . }}
+      {{ with $email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+    </p>
+    {{ end }}
+    {{ with .social }}
+    <div class="profile-social">
+      {{ range . }}
+        <a href="{{ .url }}" target="_blank" rel="me noopener">{{ .name }}</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

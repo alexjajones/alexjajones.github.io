@@ -1,0 +1,13 @@
+<header class="site-header">
+  {{ if not .IsHome }}
+  <a class="mini-identity" href="{{ "/" | relURL }}">
+    <img src="{{ site.Params.profile.image | default "/images/avatar.svg" | relURL }}" alt="{{ site.Params.profile.name | default site.Title }}">
+    <span>{{ site.Params.profile.name | default site.Title }}</span>
+  </a>
+  {{ end }}
+  <div class="search-wrap">
+    <input type="search" id="search-input" placeholder="Search" aria-label="Search" autocomplete="off">
+    <kbd class="search-kbd">&#8984;K</kbd>
+    <ul id="search-results" class="search-results" hidden></ul>
+  </div>
+</header>

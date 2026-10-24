@@ -1,0 +1,44 @@
+baseURL: https://alexjajones.github.io/
+locale: en-us
+title: Alex Jones
+theme: minimal
+
+params:
+  description: Notes on code, systems, and whatever I'm digging into.
+  profile:
+    name: Alex Jones
+    subtitle: 'Staff Engineer leading ML and AI platform at <a href="https://monzo.com" target="_blank" rel="noopener">Monzo</a> 🏦. Previously worked on data and ML at <a href="https://www.revolut.com" target="_blank" rel="noopener">Revolut</a> 🏦 and <a href="https://www.just-eat.co.uk" target="_blank" rel="noopener">Just Eat</a> 🍔. Founder of <a href="https://luma.com/aaif-london" target="_blank" rel="noopener">AAIF Community London</a>, part of the Linux Foundation.'
+    image: /images/avatar.jpg
+    openToText: Looking to do talks, coffee catch-ups, and open to interesting roles in distributed systems and ML/AI infra.
+    social:
+      - name: LinkedIn
+        url: https://www.linkedin.com/in/alexjamesantonyjones/
+      - name: AAIF London
+        url: https://luma.com/aaif-london?period=past
+
+  coffeeSetup:
+    - emoji: ☕
+      name: La Pavoni lever machine
+    - emoji: 🫘
+      name: Eureka Mignon Specialita grinder
+    - emoji: ⚖️
+      name: Bookoo coffee scale
+    - emoji: 🐶🎩
+      name: Dog and Hat coffee subscription
+
+outputs:
+  home: ["html", "rss", "json"]
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: Articles
+      url: /posts/
+      weight: 2
+
+markup:
+  highlight:
+    style: monokai
+    noClasses: false

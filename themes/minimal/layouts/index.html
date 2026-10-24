@@ -1,0 +1,16 @@
+{{ define "main" }}
+  {{ partial "profile.html" . }}
+  <div class="narrow">
+    {{ partial "header.html" . }}
+    {{ partial "talks.html" . }}
+    <h2>Articles</h2>
+    <ul class="post-list">
+      {{ range (where site.RegularPages "Type" "posts") }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ with .Params.emoji }}{{ . }} {{ end }}{{ .Title }}</a>
+        </li>
+      {{ end }}
+    </ul>
+    {{ partial "coffee-setup.html" . }}
+  </div>
+{{ end }}

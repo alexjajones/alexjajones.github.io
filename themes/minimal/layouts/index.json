@@ -1,0 +1,15 @@
+{{- $posts := where site.RegularPages "Section" "posts" -}}
+{{- $talks := where site.RegularPages "Section" "talks" -}}
+{{- $needComma := false -}}
+[
+{{- range $posts -}}
+  {{- if $needComma }},{{ end -}}
+  {"title": {{ (cond (eq .Params.emoji nil) .Title (printf "%s %s" .Params.emoji .Title)) | jsonify }}, "href": {{ .RelPermalink | jsonify }}, "date": {{ .Date.Format "2006-01-02" | jsonify }}, "content": {{ .Plain | truncate 200 | jsonify }}}
+  {{- $needComma = true -}}
+{{- end -}}
+{{- range $talks -}}
+  {{- if $needComma }},{{ end -}}
+  {"title": {{ (cond (eq .Params.emoji nil) .Title (printf "%s %s" .Params.emoji .Title)) | jsonify }}, "href": {{ .RelPermalink | jsonify }}, "date": {{ .Params.event | jsonify }}, "content": {{ printf "%s %s %s" .Title .Params.event .Params.summary | jsonify }}}
+  {{- $needComma = true -}}
+{{- end -}}
+]

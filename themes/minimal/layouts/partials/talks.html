@@ -1,0 +1,17 @@
+{{ $talks := where site.RegularPages "Section" "talks" }}
+{{ with $talks }}
+<section class="talks">
+  <h2>Recent talks</h2>
+  <ul class="talks-list">
+    {{ range .ByWeight }}
+      <li>
+        <div class="talk-info">
+          <a href="{{ .RelPermalink }}">{{ with .Params.emoji }}{{ . }} {{ end }}{{ .Title }}</a>
+          {{ with .Params.summary }}<p class="talk-summary-sm">{{ . | truncate 90 }}</p>{{ end }}
+        </div>
+        <span class="talk-event">{{ .Params.event }}</span>
+      </li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

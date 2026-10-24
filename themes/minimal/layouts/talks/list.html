@@ -1,0 +1,15 @@
+{{ define "main" }}
+  {{ partial "header.html" . }}
+  <h1>{{ .Title }}</h1>
+  <ul class="talks-list">
+    {{ range .Pages.ByWeight }}
+      <li>
+        <div class="talk-info">
+          <a href="{{ .RelPermalink }}">{{ with .Params.emoji }}{{ . }} {{ end }}{{ .Title }}</a>
+          {{ with .Params.summary }}<p class="talk-summary-sm">{{ . }}</p>{{ end }}
+        </div>
+        <span class="talk-event">{{ .Params.event }}</span>
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

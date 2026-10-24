@@ -1,0 +1,25 @@
+{{ define "main" }}
+  {{ partial "header.html" . }}
+  <article>
+    <h1>{{ with .Params.emoji }}{{ . }} {{ end }}{{ .Title }}</h1>
+    {{ with .Params.event }}<p class="talk-meta">{{ . }}</p>{{ end }}
+    {{ with .Params.summary }}<p class="talk-summary">{{ . }}</p>{{ end }}
+    {{ $link := .Params.link }}
+    {{ $embedURL := "" }}
+    {{ if $link }}
+      {{ if in $link "youtube.com/watch" }}
+        {{ $embedURL = replaceRE `.*[?&]v=([a-zA-Z0-9_-]+).*` "https://www.youtube.com/embed/$1" $link }}
+      {{ else if in $link "youtu.be/" }}
+        {{ $embedURL = replaceRE `youtu\.be/([a-zA-Z0-9_-]+).*` "https://www.youtube.com/embed/$1" $link }}
+      {{ end }}
+    {{ end }}
+    {{ if $embedURL }}
+      <div class="video-embed">
+        <iframe src="{{ $embedURL }}" title="{{ .Title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    {{ else if $link }}
+      <p><a class="talk-watch" href="{{ $link }}" target="_blank" rel="noopener">{{ .Params.linkLabel | default "Watch the talk" }} &rarr;</a></p>
+    {{ end }}
+    {{ .Content }}
+  </article>
+{{ end }}
