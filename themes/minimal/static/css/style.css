@@ -479,3 +479,12 @@ footer {
 .coffee-emoji {
   font-size: 1rem;
 }
+
+.vim-active {
+  background: var(--border);
+  border-radius: 6px;
+}
+
+.vim-active a {
+  color: var(--accent);
+}
